@@ -12,5 +12,5 @@ public interface SortedTreeSetInterface //Binary Tree
 	public SortedTreeSet getRight();
 
 	public void add(Person p);
-	
+
 }

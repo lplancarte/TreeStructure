@@ -72,10 +72,10 @@ public class Main
 				hr_imperial_set_output.txt &&	hr_ordered_set_output.txt
 		*/
 		//A
-		PersonOrderedSet pos = new PersonOrderedSet();
-		System.out.println("PersonOrderedSet Object Created.");
-		PersonImperialSet pis = new PersonImperialSet();
-		System.out.println("PersonImperialSet Object Created.");
+		//PersonOrderedSet pos = new PersonOrderedSet();
+		//System.out.println("PersonOrderedSet Object Created.");
+		//PersonImperialSet pis = new PersonImperialSet();
+		//System.out.println("PersonImperialSet Object Created.");
 		//PersonSet ps = new PersonSet(); //TESTING
 		//B
 		Person romulus = null;
@@ -107,29 +107,29 @@ public class Main
 					remus = new Person(romulus);
 					//ps.add(romulus); //TESTING
 					//Add to PersonOrderedSet
-					pos.add(romulus);
+					//pos.add(romulus);
 
 					//assert to check the copy of romulus is remus
-					boolean personObjectCopied = romulus.equals(remus);
-					assert personObjectCopied;
+					//boolean personObjectCopied = romulus.equals(remus);
+					//assert personObjectCopied;
 
 					//Add to PersonImperialSet
-					pis.add(remus);
+					//pis.add(remus);
 				}catch(Exception e){};
 			}while(fileReader.hasNextLine());
 
 		}catch(Exception e){ System.out.println(e.getMessage());}
 
-		System.out.println("Alphabetical Order:");
-		System.out.println(pos.toString());
-		System.out.println("Imperial Conversion:");
-		System.out.println(pis.toString());
+		//System.out.println("Alphabetical Order:");
+		//System.out.println(pos.toString());
+		//System.out.println("Imperial Conversion:");
+		//System.out.println(pis.toString());
 		
-		System.out.println("Saving Files to Disk");
-		writeToFile("hr_ordered_set_output.txt",pos);
-		System.out.println("hr_ordered_set_output.txt SAVED.");
-		writeToFile("hr_imperial_set_output.txt",pis);
-		System.out.println("hr_ordered_set_output.txt SAVED.");
+		//System.out.println("Saving Files to Disk");
+		//writeToFile("hr_ordered_set_output.txt",pos);
+		//System.out.println("hr_ordered_set_output.txt SAVED.");
+		//writeToFile("hr_imperial_set_output.txt",pis);
+		//System.out.println("hr_ordered_set_output.txt SAVED.");
 		//System.out.println("TESTING");
 		//System.out.println(ps.toString());
 		
@@ -154,18 +154,18 @@ public class Main
 	@param PersonSet ps - Can be either of the subclass of PersonSet
 	@returns VOID
 	*/
-	public static void writeToFile(String outPutFileName, PersonSet ps){
-		try{
-			FileWriter fileWriterOrder = new FileWriter(outPutFileName);
-			fileWriterOrder.write(ps.toString());
-			fileWriterOrder.close();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-			System.out.println(e);
-			System.exit(1);
-		}
-	}
+//	public static void writeToFile(String outPutFileName, PersonSet ps){
+	//	try{
+	//		FileWriter fileWriterOrder = new FileWriter(outPutFileName);
+	//		fileWriterOrder.write(ps.toString());
+	//		fileWriterOrder.close();
+	//	}
+	//	catch(IOException e)
+	//	{
+	//		e.printStackTrace();
+	//		System.out.println(e);
+	//		System.exit(1);
+	//	}
+	//}
 }
 
