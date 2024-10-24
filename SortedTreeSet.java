@@ -11,7 +11,7 @@ class SortedTreeSet implements SortedTreeListInterface, PersonList{
 	private SortedTreeSet left;
 	private SortedTreeSet right;
 	private Person data;
-	
+
 	/**-------CONSTRUCTOR---------------------*/
 	public SortedTreeSet(){
 		this.data = null;
@@ -36,7 +36,7 @@ class SortedTreeSet implements SortedTreeListInterface, PersonList{
 	}
 
 	public SortedTreeSet getLeft(){
-		return new SortedTreeSet();
+		return this.left;
 	}
 
 	/**------RIGHT----------------------------*/
@@ -51,13 +51,35 @@ class SortedTreeSet implements SortedTreeListInterface, PersonList{
 	}
 
 	public SortedTreeSet getRight(){
-		return new SortedTreeSet();
+		return this.right;
 	}
 
 	/**------ADD----------------------------*/
+		//Person should not be null
 	public void add(Person p){
+		//To add we assume the first element is the best (its probably not)
+		//But this is a first run. Can we get the tree to work.
 
-	}
+		//create new tree node and set in data
+		SortedTreeSet ambidextrous = new SortedTreeSet();
+		ambidextrous.data = p;
+		//root does not exists
+		if(root.data == null){
+			root = ambidextrous;
+		}else{
+			//root does exists
+			if(ambidextrous.data < root){ //place in left
+				add(p);
+
+			}else{ //place in right
+
+			}
+
+		}
+
+
+	}//end add()
+
 
 
 
