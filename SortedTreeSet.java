@@ -68,14 +68,25 @@ class SortedTreeSet implements SortedTreeListInterface, PersonList{
 			root = ambidextrous;
 		}else{
 			//root does exists
-			if(ambidextrous.data < root){ //place in left
-				add(p);
+			//get local variable pointer to root
+			SortedTreeSet curr = root;
+			//while is a kind of recursion 
+			while(curr.data != null){
+				if(ambidextrous.data < curr.data &&
+					curr.getLeft() == null){//place in left
+					this.setLeft(ambidextrous);
+				}else if(ambidextrous.data > curr.data &&
+							curr.getRight() == null){ //place in right
+					this.setRight(ambidextrous);
+				}else if(ambidextrous.data < curr.data){
+					curr = curr.getLeft();
+				}else if(ambidextrous.data > curr.data){
+					curr = curr.getRight();
+				}
 
-			}else{ //place in right
+			}//end while
 
-			}
-
-		}
+		}// end else
 
 
 	}//end add()
