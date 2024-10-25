@@ -4,7 +4,7 @@ Created:  24 OCT 2024
 Description: Binary Tree Implementation to sort HR data.
 */
 
-class SortedTreeSet implements SortedTreeListInterface, PersonList{
+public class SortedTreeSet implements SortedTreeSetInterface{
 
 	/**-------CLASS VARIABLES------------------*/
 	private static SortedTreeSet root = new SortedTreeSet();
@@ -23,6 +23,7 @@ class SortedTreeSet implements SortedTreeListInterface, PersonList{
 	public Person getPerson(){
 		return this.data;
 	}
+ 
 
 	/**------LEFT----------------------------*/
 	public boolean hasLeft(){
@@ -72,15 +73,15 @@ class SortedTreeSet implements SortedTreeListInterface, PersonList{
 			SortedTreeSet curr = root;
 			//while is a kind of recursion 
 			while(curr.data != null){
-				if(ambidextrous.data < curr.data &&
+				if(ambidextrous.data.compareTo(curr.data) < 0 &&
 					curr.getLeft() == null){//place in left
 					this.setLeft(ambidextrous);
-				}else if(ambidextrous.data > curr.data &&
+				}else if(ambidextrous.data.compareTo(curr.data) > 0 &&
 							curr.getRight() == null){ //place in right
 					this.setRight(ambidextrous);
-				}else if(ambidextrous.data < curr.data){
+				}else if(ambidextrous.data.compareTo(curr.data) < 0){
 					curr = curr.getLeft();
-				}else if(ambidextrous.data > curr.data){
+				}else if(ambidextrous.data.compareTo(curr.data) > 0){
 					curr = curr.getRight();
 				}
 
