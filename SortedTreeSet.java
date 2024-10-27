@@ -68,43 +68,47 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		SortedTreeSet ambidextrous = new SortedTreeSet();
 		ambidextrous.data = p;
 		//root does not exists
-		if(root.data == null){
+		if(this.root.data == null){
 			root = ambidextrous;
 			System.out.println("ROOT ADDED");
 		}else{
 			//root does exists
 			//get local variable pointer to root
-			SortedTreeSet curr = root;
+			SortedTreeSet curr = this.root;
 			//while is a kind of recursion 
-			while(curr.data != null){
+			if(curr.data != null){
 				if(ambidextrous.data.compareTo(curr.data) < 0 &&
 					curr.getLeft() == null){//place in left
-					this.setLeft(ambidextrous);
+					curr.setLeft(ambidextrous);
 					System.out.println("LEFT");
-					break;
+				
 
 				}else if(ambidextrous.data.compareTo(curr.data) > 0 &&
 							curr.getRight() == null){ //place in right
-					this.setRight(ambidextrous);
+					curr.setRight(ambidextrous);
 					System.out.println("RIGHT");
-					break;
 
-				}else if(ambidextrous.data.compareTo(curr.data) < 0){
+
+				}else if(ambidextrous.data.compareTo(curr.data) < 0 &&
+						curr.getLeft() != null){
 					curr = curr.getLeft();
 					System.out.println("LEFT NOT NULL");
+					curr.root = curr;
 					add(curr.data);
 
-				}else if(ambidextrous.data.compareTo(curr.data) > 0){
+				}else if(ambidextrous.data.compareTo(curr.data) > 0 &&
+						curr.getRight() != null){
 					curr = curr.getRight();
 					System.out.println("RIGHT NOT NULL");
+					curr.root= curr;
 					add(curr.data);
 
+
 				}else{
-					break;
+					System.out.println("REPEAT");
 				}
 				
-
-			}//end while
+		};//end if
 
 		}// end else
 
@@ -119,24 +123,35 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		//to print out binary tree using levelOrder. ei iterating through
 		//each level before proceeding to the next. Starting at the root
 		//and iterating through each level. Lets do this.
+		String toConsole = "DEFAULT";
+		String newLine;
+		SortedTreeSet top = root;
+		int count = 0;
 
 		if(root == null)
 			return "EMPTY TREE";
 
-		//Queue<SortedTreeSet> queue = new LinkedList<>();
-		//queue.add(root);
-/*
+		LinkedList<SortedTreeSet> queue = new LinkedList<>();
+		queue.add(top); //add the root to the queue
+
 		while(!queue.isEmpty()){
-			SortedTreeSet node = queue.remove();
-			System.out.println(node.data + " \n");
+			SortedTreeSet node = queue.remove(); //this is the root?
+			System.out.print(node.data.toString() + " \n");
 
 			if(node.left != null)
 				queue.add(node.left);
 
 			if(node.right != null)
 				queue.add(node.right);
-		}*/
-		return "DID IT WORK";
+
+			//System.out.println(queue.data + " \n");
+		//	newLine = queue.data.toString() + "\n";
+		//	toConsole = toConsole.concat(newLine);
+
+		}
+		System.out.println("COUNT: " + count);
+
+		return toConsole;
 
 
 
