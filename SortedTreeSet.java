@@ -4,6 +4,9 @@ Created:  24 OCT 2024
 Description: Binary Tree Implementation to sort HR data.
 */
 
+import java.util.Queue;
+import java.util.LinkedList;
+
 public class SortedTreeSet implements SortedTreeSetInterface{
 
 	/**-------CLASS VARIABLES------------------*/
@@ -67,6 +70,7 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		//root does not exists
 		if(root.data == null){
 			root = ambidextrous;
+			System.out.println("ROOT ADDED");
 		}else{
 			//root does exists
 			//get local variable pointer to root
@@ -76,14 +80,29 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 				if(ambidextrous.data.compareTo(curr.data) < 0 &&
 					curr.getLeft() == null){//place in left
 					this.setLeft(ambidextrous);
+					System.out.println("LEFT");
+					break;
+
 				}else if(ambidextrous.data.compareTo(curr.data) > 0 &&
 							curr.getRight() == null){ //place in right
 					this.setRight(ambidextrous);
+					System.out.println("RIGHT");
+					break;
+
 				}else if(ambidextrous.data.compareTo(curr.data) < 0){
 					curr = curr.getLeft();
+					System.out.println("LEFT NOT NULL");
+					add(curr.data);
+
 				}else if(ambidextrous.data.compareTo(curr.data) > 0){
 					curr = curr.getRight();
+					System.out.println("RIGHT NOT NULL");
+					add(curr.data);
+
+				}else{
+					break;
 				}
+				
 
 			}//end while
 
@@ -93,6 +112,36 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 	}//end add()
 
 
+	@Override
+	public String toString(){
+		//return "TODO";
+		//Reading online there is use of linkedlists and queue class
+		//to print out binary tree using levelOrder. ei iterating through
+		//each level before proceeding to the next. Starting at the root
+		//and iterating through each level. Lets do this.
+
+		if(root == null)
+			return "EMPTY TREE";
+
+		//Queue<SortedTreeSet> queue = new LinkedList<>();
+		//queue.add(root);
+/*
+		while(!queue.isEmpty()){
+			SortedTreeSet node = queue.remove();
+			System.out.println(node.data + " \n");
+
+			if(node.left != null)
+				queue.add(node.left);
+
+			if(node.right != null)
+				queue.add(node.right);
+		}*/
+		return "DID IT WORK";
+
+
+
+
+	}//end toString()
 
 
 }//end class

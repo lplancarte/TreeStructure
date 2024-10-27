@@ -78,6 +78,7 @@ public class Main
 		//System.out.println("PersonImperialSet Object Created.");
 		//PersonSet ps = new PersonSet(); //TESTING
 		//B
+		SortedTreeSet tree = new SortedTreeSet(); //set up tree
 		Person romulus = null;
 		Person remus = null;
 		if(args.length < 1){
@@ -104,7 +105,10 @@ public class Main
 									fileReader.nextDouble());
 					if(romulus == null)
 						break;
-					remus = new Person(romulus);
+					//remus = new Person(romulus);
+					tree.add(romulus);
+
+
 					//ps.add(romulus); //TESTING
 					//Add to PersonOrderedSet
 					//pos.add(romulus);
@@ -132,7 +136,7 @@ public class Main
 		//System.out.println("hr_ordered_set_output.txt SAVED.");
 		//System.out.println("TESTING");
 		//System.out.println(ps.toString());
-		
+		System.out.println(tree.toString());
 		/*
 		{
 			FileWriter fileWriterOrder = new FileWriter("outputfile.txt");
