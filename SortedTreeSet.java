@@ -14,12 +14,14 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 	private SortedTreeSet left;
 	private SortedTreeSet right;
 	private Person data;
+	private int count;
 
 	/**-------CONSTRUCTOR---------------------*/
 	public SortedTreeSet(){
 		this.data = null;
 		this.left = null;
 		this.right = null;
+		this.count = 1;
 	}
 
 	/**-------GET---------------------------*/
@@ -71,44 +73,73 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		if(this.root.data == null){
 			root = ambidextrous;
 			System.out.println("ROOT ADDED");
+			System.out.println(ambidextrous.data);
 		}else{
 			//root does exists
 			//get local variable pointer to root
 			SortedTreeSet curr = this.root;
+
+			System.out.print("CURRENT: " + ambidextrous.data.toString());
+			if(ambidextrous.data.compareTo(curr.data) < 0){
+				//smaller than root
+				System.out.println(" --smaller than root");
+			}else if(ambidextrous.data.compareTo(curr.data) > 0){
+				//larger than root
+				System.out.println(" --LARGER THAN ROOT");
+			}else{
+				//repeat
+				System.out.println(" --REPEATED");
+			}
+
+			System.out.println();
+
 			//while is a kind of recursion 
-			if(curr.data != null){
-				if(ambidextrous.data.compareTo(curr.data) < 0 &&
-					curr.getLeft() == null){//place in left
-					curr.setLeft(ambidextrous);
-					System.out.println("LEFT");
-				
 
-				}else if(ambidextrous.data.compareTo(curr.data) > 0 &&
-							curr.getRight() == null){ //place in right
-					curr.setRight(ambidextrous);
-					System.out.println("RIGHT");
+			/*if(ambidextrous.data.compareTo(curr.data) < 0 &&
+				curr.getLeft() == null){//place in left
+
+				curr.setLeft(ambidextrous);
+				System.out.println("LEFT");
+				System.out.println(curr.getLeft().data);
 
 
-				}else if(ambidextrous.data.compareTo(curr.data) < 0 &&
-						curr.getLeft() != null){
-					curr = curr.getLeft();
-					System.out.println("LEFT NOT NULL");
-					curr.root = curr;
-					add(curr.data);
+			}
 
-				}else if(ambidextrous.data.compareTo(curr.data) > 0 &&
-						curr.getRight() != null){
-					curr = curr.getRight();
-					System.out.println("RIGHT NOT NULL");
-					curr.root= curr;
-					add(curr.data);
+			if(ambidextrous.data.compareTo(curr.data) > 0 &&
+					curr.getRight() == null){ //place in right
+
+				curr.setRight(ambidextrous);
+				System.out.println("RIGHT");
+				System.out.println(curr.getRight().data);
 
 
-				}else{
-					System.out.println("REPEAT");
-				}
-				
-		};//end if
+			}
+
+			if(ambidextrous.data.compareTo(curr.data) < 0 &&
+					curr.getLeft() != null){
+				curr = curr.getLeft();
+				System.out.println("LEFT NOT NULL");
+				System.out.print(curr.data.toString());
+				curr.root = curr;
+				add(p);
+
+			}
+
+			if(ambidextrous.data.compareTo(curr.data) > 0 &&
+					curr.getRight() != null){
+				curr = curr.getRight();
+				System.out.println("RIGHT NOT NULL");
+				System.out.print(curr.data.toString());
+				curr.root= curr;
+				add(p);
+
+
+			}
+
+			if(ambidextrous.data.compareTo(curr.data) == 0){
+				System.out.println("REPEAT");
+			}*/
+
 
 		}// end else
 

@@ -106,6 +106,7 @@ public class Main
 					if(romulus == null)
 						break;
 					//remus = new Person(romulus);
+					System.out.println("NEXT IN LINE");
 					tree.add(romulus);
 
 
