@@ -93,11 +93,13 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 				if(localRoot.getLeft() == null){
 					System.out.println(localRoot.data.getName()+"'s Left side open.Adding");
 					localRoot.setLeft(ambidextrous);
+					return;
 				}else{
 					System.out.println(localRoot.data.getName()+"'s Left side not open.Checking: " + localRoot.getLeft().data.getName());
 		
 					//localRoot.getLeft().getLeft().add(p);
 					localRoot = localRoot.getLeft();
+					
 				}
 
 			}
@@ -108,11 +110,13 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 				if(localRoot.getRight() == null){
 					System.out.println(localRoot.data.getName()+"'s Right Side Open. Adding");
 					localRoot.setRight(ambidextrous);
+					return;
 				}else{
 					System.out.println(localRoot.data.getName()+"'s Right side not open. Checking "+localRoot.getRight().data.getName());
 
 					//localRoot.getRight().getRight().add(p);
 					localRoot = localRoot.getRight();
+					
 				}
 			}
 
@@ -130,7 +134,7 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 
 
 
-
+		
 
 	}//end add()
 
