@@ -78,17 +78,26 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 			//root does exists
 			//get local variable pointer to root
 			SortedTreeSet curr = this.root;
-
-			System.out.print("CURRENT: " + ambidextrous.data.toString());
+			System.out.print("INSERTING: " + ambidextrous.data.toString());
 			if(ambidextrous.data.compareTo(curr.data) < 0){
 				//smaller than root
-				System.out.println(" --smaller than root");
+				System.out.println(" -- smaller than root");
+
+				if(curr.getLeft() == null){
+					System.out.println("Left side open.Adding");
+					curr.setLeft(ambidextrous);
+				}else{
+					System.out.println("Left side not open.Checking");
+				}
+
 			}else if(ambidextrous.data.compareTo(curr.data) > 0){
 				//larger than root
 				System.out.println(" --LARGER THAN ROOT");
+
 			}else{
 				//repeat
 				System.out.println(" --REPEATED");
+
 			}
 
 			System.out.println();
