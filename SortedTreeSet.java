@@ -146,41 +146,36 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		//to print out binary tree using levelOrder. ei iterating through
 		//each level before proceeding to the next. Starting at the root
 		//and iterating through each level. Lets do this.
+		
+		//https://github.com/anandkumarkparmar/Data-Structures-Algorithms/blob/master/data-structures/binary-tree/TreeTraversalUtil.java
+		//this source was used to quickly display if the tree was adding.
+		//slowly but surely realizing that a different display algorithm is required. putting the median in the middle.
+		//achieved through recursion, a static void function named inOrderTraversal() is used to test. test is sucessful.
+		//https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/#level-order-traversal
+		
 		String toConsole = "\nNAME     HEIGHT     WEIGHT\n";
 		String newLine;
-		SortedTreeSet top = root;
-		int count = 0;
 
 		if(root == null)
 			return "EMPTY TREE";
-
-		Queue<SortedTreeSet> queue = new LinkedList<>();
-		queue.add(root); //add the root to the queue
-
-		while(!queue.isEmpty()){
-			SortedTreeSet node = queue.remove(); //this is the root?
-			//System.out.print(node.data.toString() + " \n");
-
-			if(node.hasLeft()){
-				queue.add(node.getLeft());
-			}
-
-			if(node.hasRight()){
-				queue.add(node.getRight());
-			}
-
-			//System.out.println(node.data.toString());
-			newLine = node.data.toString() + "\n";
-			toConsole = toConsole.concat(newLine);
-			count++;
-
-		}
-		//System.out.println("COUNT: " + count);
-
+		
+		//Inorder Traversal is what we need
+		inOrderTraversal(root);
 		return toConsole;
 	
 
 	}//end toString()
 
+
+	static private void inOrderTraversal(SortedTreeSet node){
+		if(node == null)
+			return;
+		
+		inOrderTraversal(node.getLeft());
+		System.out.println(node.getPerson());
+		
+		inOrderTraversal(node.getRight());
+		
+	}
 
 }//end class
