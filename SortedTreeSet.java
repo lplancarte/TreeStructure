@@ -21,7 +21,6 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		this.data = null;
 		this.left = null;
 		this.right = null;
-		this.count = 1;
 	}
 
 	/**-------GET---------------------------*/
@@ -69,32 +68,52 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		//create new tree node and set in data
 		SortedTreeSet ambidextrous = new SortedTreeSet();
 		ambidextrous.data = p;
+
 		//root does not exists
-		if(this.root.data == null){
+		if(root.data == null){
 			root = ambidextrous;
 			System.out.println("ROOT ADDED");
-			System.out.println(ambidextrous.data);
-		}else{
+
+	}
+
 			//root does exists
 			//get local variable pointer to root
-			SortedTreeSet curr = this.root;
+			SortedTreeSet curr = null;
+			curr = root;
+			System.out.println(curr.data);
+			System.out.println("CURR.DATA"+ curr.data);
+			
 			System.out.print("INSERTING: " + ambidextrous.data.toString());
+			
 			if(ambidextrous.data.compareTo(curr.data) < 0){
 				//smaller than root
-				System.out.println(" -- smaller than root");
+				System.out.println(" -- smaller than root: "+root.data);
 
 				if(curr.getLeft() == null){
 					System.out.println("Left side open.Adding");
 					curr.setLeft(ambidextrous);
 				}else{
 					System.out.println("Left side not open.Checking");
+					System.out.println("CURR.GETLEFT()"+curr.getLeft().data);
+					curr = curr.getLeft();				
+					curr.getLeft().add(p);
 				}
 
-			}else if(ambidextrous.data.compareTo(curr.data) > 0){
-				//larger than root
-				System.out.println(" --LARGER THAN ROOT");
+			}
 
-			}else{
+			if(ambidextrous.data.compareTo(curr.data) > 0){
+				//larger than root
+				System.out.println(" --LARGER THAN ROOT: "+ root.data);
+				if(curr.getRight() == null){
+					System.out.println("Right Side Open. Adding");
+					curr.setRight(ambidextrous);
+				}else{
+					System.out.println("Right side not open. Checking");
+				}
+			}
+
+			if(ambidextrous.data.compareTo(curr.data) == 0)
+			{
 				//repeat
 				System.out.println(" --REPEATED");
 
@@ -150,7 +169,6 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 			}*/
 
 
-		}// end else
 
 
 	}//end add()
@@ -187,6 +205,7 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 			//System.out.println(queue.data + " \n");
 		//	newLine = queue.data.toString() + "\n";
 		//	toConsole = toConsole.concat(newLine);
+			count++;
 
 		}
 		System.out.println("COUNT: " + count);
