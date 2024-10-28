@@ -84,6 +84,7 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 			//System.out.println("localRoot.ROOT:  "+ localRoot.root);
 			
 			//System.out.print("INSERTING: " + ambidextrous.data.toString());
+			while(localRoot != null){ //daloop
 			
 			if(ambidextrous.data.compareTo(localRoot.data) < 0){
 				//smaller than root
@@ -95,8 +96,8 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 				}else{
 					System.out.println(localRoot.data.getName()+"'s Left side not open.Checking: " + localRoot.getLeft().data.getName());
 		
-					localRoot.getLeft().getLeft().add(p);
-					
+					//localRoot.getLeft().getLeft().add(p);
+					localRoot = localRoot.getLeft();
 				}
 
 			}
@@ -110,7 +111,8 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 				}else{
 					System.out.println(localRoot.data.getName()+"'s Right side not open. Checking "+localRoot.getRight().data.getName());
 
-					localRoot.getRight().getRight().add(p);
+					//localRoot.getRight().getRight().add(p);
+					localRoot = localRoot.getRight();
 				}
 			}
 
@@ -123,7 +125,8 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 			}
 
 			System.out.println();
-
+			
+		}//end while
 
 
 
