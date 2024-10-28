@@ -76,13 +76,15 @@ public class Main
 		}catch(Exception e){ System.out.println(e.getMessage());}
 
 		System.out.println("\nAlphabetical Order:");
-		System.out.println(tree.toString());
+		String treeOutput = tree.toString(); //call once;
+
+		System.out.println(treeOutput);
 		//System.out.println(pos.toString());
 		//System.out.println("Imperial Conversion:");
 		//System.out.println(pis.toString());
 
 		System.out.println("Saving Files to Disk");
-		writeToFile("hr_ordered_set_output.txt", tree);
+		writeToFile("hr_ordered_set_output.txt", treeOutput);
 		System.out.println("hr_ordered_set_output.txt SAVED.");
 		//writeToFile("hr_imperial_set_output.txt",pis);
 		//System.out.println("hr_ordered_set_output.txt SAVED.");
@@ -106,13 +108,13 @@ public class Main
 	/**
 	Writes data to output file. using SortedTreeSet toString()
 	@param String outPutFileName - name of the file to use to save to disk
-	@param SortedTreeSet tree - name of binary tree to write
+	@param String treeOutput - output of tree in order
 	@returns VOID
 	*/
-	public static void writeToFile(String outPutFileName, SortedTreeSet tree){
+	public static void writeToFile(String outPutFileName, String treeOutput){
 		try{
 			FileWriter fileWriterOrder = new FileWriter(outPutFileName);
-			fileWriterOrder.write(tree.toString());
+			fileWriterOrder.write(treeOutput);
 			fileWriterOrder.close();
 		}
 		catch(IOException e)
