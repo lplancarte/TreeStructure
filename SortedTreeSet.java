@@ -73,42 +73,45 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		if(root.data == null){
 			root = ambidextrous;
 			System.out.println("ROOT ADDED");
-
-	}
+			return;
+		}
 
 			//root does exists
 			//get local variable pointer to root
 			SortedTreeSet curr = null;
 			curr = root;
-			System.out.println(curr.data);
-			System.out.println("CURR.DATA"+ curr.data);
+			//System.out.println(curr.data);
+			//System.out.println("CURR.DATA:  "+ curr.data);
+			//System.out.println("CURR.ROOT:  "+ curr.root);
 			
-			System.out.print("INSERTING: " + ambidextrous.data.toString());
+			//System.out.print("INSERTING: " + ambidextrous.data.toString());
 			
 			if(ambidextrous.data.compareTo(curr.data) < 0){
 				//smaller than root
-				System.out.println(" -- smaller than root: "+root.data);
+				//System.out.println(" -- smaller than root: "+root.data);
 
 				if(curr.getLeft() == null){
-					System.out.println("Left side open.Adding");
+					System.out.println(curr.data.getName()+"'s Left side open.Adding");
 					curr.setLeft(ambidextrous);
 				}else{
-					System.out.println("Left side not open.Checking");
-					System.out.println("CURR.GETLEFT()"+curr.getLeft().data);
-					curr = curr.getLeft();				
-					curr.getLeft().add(p);
+					System.out.println("Left side not open.Checking: " + curr.getLeft().data.getName());
+					curr = curr.getLeft();
+					curr.getLeft().add(p);	
+					
 				}
 
 			}
 
 			if(ambidextrous.data.compareTo(curr.data) > 0){
 				//larger than root
-				System.out.println(" --LARGER THAN ROOT: "+ root.data);
+				//System.out.println(" --LARGER THAN ROOT: "+ root.data);
 				if(curr.getRight() == null){
-					System.out.println("Right Side Open. Adding");
+					System.out.println(curr.data.getName()+"'s Right Side Open. Adding");
 					curr.setRight(ambidextrous);
 				}else{
-					System.out.println("Right side not open. Checking");
+					System.out.println("Right side not open. Checking "+curr.getRight().data.getName());
+					curr = curr.getRight();
+					curr.getRight().add(p);
 				}
 			}
 
@@ -189,12 +192,12 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		if(root == null)
 			return "EMPTY TREE";
 
-		LinkedList<SortedTreeSet> queue = new LinkedList<>();
-		queue.add(top); //add the root to the queue
+		Queue<SortedTreeSet> queue = new LinkedList<>();
+		queue.add(root); //add the root to the queue
 
 		while(!queue.isEmpty()){
 			SortedTreeSet node = queue.remove(); //this is the root?
-			System.out.print(node.data.toString() + " \n");
+			//System.out.print(node.data.toString() + " \n");
 
 			if(node.left != null)
 				queue.add(node.left);

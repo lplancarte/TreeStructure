@@ -80,6 +80,8 @@ public class Main
 		//B
 		SortedTreeSet tree = new SortedTreeSet(); //set up tree
 		Person romulus = null;
+		int count = 0;
+
 		Person remus = null;
 		if(args.length < 1){
 			System.out.println("Missing Argument. File Name Required.");
@@ -106,10 +108,10 @@ public class Main
 					if(romulus == null)
 						break;
 					//remus = new Person(romulus);
-					System.out.println("NEXT IN LINE");
+					System.out.println("Adding: "+romulus.toString());
 					tree.add(romulus);
-
-
+					count++;
+					System.out.println("Count: "+count);
 					//ps.add(romulus); //TESTING
 					//Add to PersonOrderedSet
 					//pos.add(romulus);
