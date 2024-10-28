@@ -75,19 +75,20 @@ public class Main
 
 		}catch(Exception e){ System.out.println(e.getMessage());}
 
-		//System.out.println("Alphabetical Order:");
+		System.out.println("\nAlphabetical Order:");
+		System.out.println(tree.toString());
 		//System.out.println(pos.toString());
 		//System.out.println("Imperial Conversion:");
 		//System.out.println(pis.toString());
-		
-		//System.out.println("Saving Files to Disk");
-		//writeToFile("hr_ordered_set_output.txt",pos);
-		//System.out.println("hr_ordered_set_output.txt SAVED.");
+
+		System.out.println("Saving Files to Disk");
+		writeToFile("hr_ordered_set_output.txt", tree);
+		System.out.println("hr_ordered_set_output.txt SAVED.");
 		//writeToFile("hr_imperial_set_output.txt",pis);
 		//System.out.println("hr_ordered_set_output.txt SAVED.");
 		//System.out.println("TESTING");
 		//System.out.println(ps.toString());
-		System.out.println(tree.toString());
+		//System.out.println(tree.toString());
 		/*
 		{
 			FileWriter fileWriterOrder = new FileWriter("outputfile.txt");
@@ -103,24 +104,23 @@ public class Main
 	}
 
 	/**
-	Writes data to output file. Uses the superclass PersonSet to write
-	correct data to file. 
+	Writes data to output file. using SortedTreeSet toString()
 	@param String outPutFileName - name of the file to use to save to disk
-	@param PersonSet ps - Can be either of the subclass of PersonSet
+	@param SortedTreeSet tree - name of binary tree to write
 	@returns VOID
 	*/
-//	public static void writeToFile(String outPutFileName, PersonSet ps){
-	//	try{
-	//		FileWriter fileWriterOrder = new FileWriter(outPutFileName);
-	//		fileWriterOrder.write(ps.toString());
-	//		fileWriterOrder.close();
-	//	}
-	//	catch(IOException e)
-	//	{
-	//		e.printStackTrace();
-	//		System.out.println(e);
-	//		System.exit(1);
-	//	}
-	//}
+	public static void writeToFile(String outPutFileName, SortedTreeSet tree){
+		try{
+			FileWriter fileWriterOrder = new FileWriter(outPutFileName);
+			fileWriterOrder.write(tree.toString());
+			fileWriterOrder.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+			System.out.println(e);
+			System.exit(1);
+		}
+	}
 }
 

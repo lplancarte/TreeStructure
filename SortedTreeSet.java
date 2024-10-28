@@ -158,9 +158,9 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 
 		if(root == null)
 			return "EMPTY TREE";
-		inOrderTraversal(root);
-
+		
 		//Inorder Traversal is what we need
+		inOrderTraversal(root);
 		return builder.toString();//inOrderTraversal(root);
 	
 	
