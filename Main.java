@@ -42,42 +42,6 @@ public class Main
 	public static void main(String[] args)
 	{
 
-		//A
-		//Person mario = new Person("Mario",187,95);
-
-		//B
-		//PersonSet ps = new PersonSet();
-		//ps.add(mario);
-		//Person marioTest = ps.get(0);
-		//System.out.println("PersonSet.Get(index:0)= "+marioTest.toString());
-
-		//C
-		//System.out.println("\nRead data from file and Display to Screen:");
-		/*
-		// Don't overcomplicate the data
-		// reading. After skipping the
-		// first row, you can use the
-		// following to read a row of
-		// character info, assuming your
-		// Scanner is named "fileReader"
-		*/
-
-		/**
-			PART 2
-			A)Instantiate a PersonOrderedSet and PersonImperialSet
-			B)Read in Data, populate both sets objects with Persons
-			C)Write out data into two separate output files
-				1) Ordered		2)Imperial
-			D)Output formatted data with header to separate files named:
-				hr_imperial_set_output.txt &&	hr_ordered_set_output.txt
-		*/
-		//A
-		//PersonOrderedSet pos = new PersonOrderedSet();
-		//System.out.println("PersonOrderedSet Object Created.");
-		//PersonImperialSet pis = new PersonImperialSet();
-		//System.out.println("PersonImperialSet Object Created.");
-		//PersonSet ps = new PersonSet(); //TESTING
-		//B
 		SortedTreeSet tree = new SortedTreeSet(); //set up tree
 		Person romulus = null;
 		int count = 0;
@@ -94,13 +58,6 @@ public class Main
 			fileReader = new Scanner(inputFile);
 			String nL = fileReader.nextLine();
 			do{
-				//String name = fileReader.next();
-				//double height = fileReader.nextDouble();
-				//double weight = fileReader.nextDouble();
-				//System.out.println(name);
-				//System.out.println(height);
-				//System.out.println(weight);
-				//System.out.println();
 				try{
 					romulus = new Person(fileReader.next(),
 									fileReader.nextDouble(),
@@ -112,16 +69,7 @@ public class Main
 					tree.add(romulus);
 					count++;
 					System.out.println("Count: "+count);
-					//ps.add(romulus); //TESTING
-					//Add to PersonOrderedSet
-					//pos.add(romulus);
 
-					//assert to check the copy of romulus is remus
-					//boolean personObjectCopied = romulus.equals(remus);
-					//assert personObjectCopied;
-
-					//Add to PersonImperialSet
-					//pis.add(remus);
 				}catch(Exception e){};
 			}while(fileReader.hasNextLine());
 

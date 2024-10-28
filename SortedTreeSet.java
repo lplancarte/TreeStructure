@@ -61,9 +61,7 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 	/**------ADD----------------------------*/
 		//Person should not be null
 	public void add(Person p){
-		//To add we assume the first element is the best (its probably not)
-		//But this is a first run. Can we get the tree to work.
-
+		
 		//create new tree node and set in data
 		SortedTreeSet ambidextrous = new SortedTreeSet();
 		ambidextrous.data = p;
@@ -77,44 +75,46 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 
 			//root does exists
 			//get local variable pointer to root
-			SortedTreeSet curr = null;
-			curr = root;
-			//System.out.println(curr.data);
-			//System.out.println("CURR.DATA:  "+ curr.data);
-			//System.out.println("CURR.ROOT:  "+ curr.root);
+			SortedTreeSet localRoot = null;
+			
+			localRoot = root;
+			
+			//System.out.println(localRoot.data);
+			//System.out.println("localRoot.DATA:  "+ localRoot.data);
+			//System.out.println("localRoot.ROOT:  "+ localRoot.root);
 			
 			//System.out.print("INSERTING: " + ambidextrous.data.toString());
 			
-			if(ambidextrous.data.compareTo(curr.data) < 0){
+			if(ambidextrous.data.compareTo(localRoot.data) < 0){
 				//smaller than root
 				//System.out.println(" -- smaller than root: "+root.data);
 
-				if(curr.getLeft() == null){
-					System.out.println(curr.data.getName()+"'s Left side open.Adding");
-					curr.setLeft(ambidextrous);
+				if(localRoot.getLeft() == null){
+					System.out.println(localRoot.data.getName()+"'s Left side open.Adding");
+					localRoot.setLeft(ambidextrous);
 				}else{
-					System.out.println(curr.data.getName()+"'s Left side not open.Checking: " + curr.getLeft().data.getName());
+					System.out.println(localRoot.data.getName()+"'s Left side not open.Checking: " + localRoot.getLeft().data.getName());
 		
-					curr.getLeft().getLeft().add(p);
+					localRoot.getLeft().getLeft().add(p);
 					
 				}
 
 			}
 
-			if(ambidextrous.data.compareTo(curr.data) > 0){
+			if(ambidextrous.data.compareTo(localRoot.data) > 0){
 				//larger than root
 				//System.out.println(" --LARGER THAN ROOT: "+ root.data);
-				if(curr.getRight() == null){
-					System.out.println(curr.data.getName()+"'s Right Side Open. Adding");
-					curr.setRight(ambidextrous);
+				if(localRoot.getRight() == null){
+					System.out.println(localRoot.data.getName()+"'s Right Side Open. Adding");
+					localRoot.setRight(ambidextrous);
 				}else{
-					System.out.println(curr.data.getName()+"'s Right side not open. Checking "+curr.getRight().data.getName());
+					System.out.println(localRoot.data.getName()+"'s Right side not open. Checking "+localRoot.getRight().data.getName());
 
-					curr.getRight().getRight().add(p);
+					localRoot.getRight().getRight().add(p);
 				}
 			}
 
-			if(ambidextrous.data.compareTo(curr.data) == 0)
+			if(ambidextrous.data.compareTo(localRoot.data) == 0)
 			{
 				//repeat
 				System.out.println(" --REPEATED");
@@ -124,52 +124,7 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 
 			System.out.println();
 
-			//while is a kind of recursion 
 
-			/*if(ambidextrous.data.compareTo(curr.data) < 0 &&
-				curr.getLeft() == null){//place in left
-
-				curr.setLeft(ambidextrous);
-				System.out.println("LEFT");
-				System.out.println(curr.getLeft().data);
-
-
-			}
-
-			if(ambidextrous.data.compareTo(curr.data) > 0 &&
-					curr.getRight() == null){ //place in right
-
-				curr.setRight(ambidextrous);
-				System.out.println("RIGHT");
-				System.out.println(curr.getRight().data);
-
-
-			}
-
-			if(ambidextrous.data.compareTo(curr.data) < 0 &&
-					curr.getLeft() != null){
-				curr = curr.getLeft();
-				System.out.println("LEFT NOT NULL");
-				System.out.print(curr.data.toString());
-				curr.root = curr;
-				add(p);
-
-			}
-
-			if(ambidextrous.data.compareTo(curr.data) > 0 &&
-					curr.getRight() != null){
-				curr = curr.getRight();
-				System.out.println("RIGHT NOT NULL");
-				System.out.print(curr.data.toString());
-				curr.root= curr;
-				add(p);
-
-
-			}
-
-			if(ambidextrous.data.compareTo(curr.data) == 0){
-				System.out.println("REPEAT");
-			}*/
 
 
 
