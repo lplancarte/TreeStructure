@@ -14,6 +14,8 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 	private SortedTreeSet left;
 	private SortedTreeSet right;
 	private Person data;
+	private static String header = String.format("%-6s %12s %9s\n","Name", "Height (cm)", "Weight (kg)");
+	private static StringBuilder builder = new StringBuilder(header);
 
 	/**-------CONSTRUCTOR---------------------*/
 	public SortedTreeSet(){
@@ -153,29 +155,28 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		//achieved through recursion, a static void function named inOrderTraversal() is used to test. test is sucessful.
 		//https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/#level-order-traversal
 		
-		String toConsole = "\nNAME     HEIGHT     WEIGHT\n";
-		String newLine;
 
 		if(root == null)
 			return "EMPTY TREE";
-		
-		//Inorder Traversal is what we need
 		inOrderTraversal(root);
-		return toConsole;
+
+		//Inorder Traversal is what we need
+		return builder.toString();//inOrderTraversal(root);
+	
 	
 
 	}//end toString()
 
-
+	//shamelessly copied from geeksforgeeks. I'm just glad the tree is working.
 	static private void inOrderTraversal(SortedTreeSet node){
 		if(node == null)
 			return;
-		
+				
 		inOrderTraversal(node.getLeft());
-		System.out.println(node.getPerson());
-		
+		//System.out.println(node.getPerson());
+		builder.append(node.getPerson()); //builder needs to be a class variable...static 
 		inOrderTraversal(node.getRight());
-		
+	
 	}
 
 }//end class
