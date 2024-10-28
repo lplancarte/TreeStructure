@@ -108,7 +108,7 @@ public class Main
 					if(romulus == null)
 						break;
 					//remus = new Person(romulus);
-					System.out.println("Adding: "+romulus.toString());
+					//System.out.println("Adding: "+romulus.toString());
 					tree.add(romulus);
 					count++;
 					System.out.println("Count: "+count);

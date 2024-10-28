@@ -14,7 +14,6 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 	private SortedTreeSet left;
 	private SortedTreeSet right;
 	private Person data;
-	private int count;
 
 	/**-------CONSTRUCTOR---------------------*/
 	public SortedTreeSet(){
@@ -94,9 +93,9 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 					System.out.println(curr.data.getName()+"'s Left side open.Adding");
 					curr.setLeft(ambidextrous);
 				}else{
-					System.out.println("Left side not open.Checking: " + curr.getLeft().data.getName());
-					curr = curr.getLeft();
-					curr.getLeft().add(p);	
+					System.out.println(curr.data.getName()+"'s Left side not open.Checking: " + curr.getLeft().data.getName());
+		
+					curr.getLeft().getLeft().add(p);
 					
 				}
 
@@ -109,9 +108,9 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 					System.out.println(curr.data.getName()+"'s Right Side Open. Adding");
 					curr.setRight(ambidextrous);
 				}else{
-					System.out.println("Right side not open. Checking "+curr.getRight().data.getName());
-					curr = curr.getRight();
-					curr.getRight().add(p);
+					System.out.println(curr.data.getName()+"'s Right side not open. Checking "+curr.getRight().data.getName());
+
+					curr.getRight().getRight().add(p);
 				}
 			}
 
@@ -119,6 +118,7 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 			{
 				//repeat
 				System.out.println(" --REPEATED");
+				return;
 
 			}
 
@@ -184,7 +184,7 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 		//to print out binary tree using levelOrder. ei iterating through
 		//each level before proceeding to the next. Starting at the root
 		//and iterating through each level. Lets do this.
-		String toConsole = "DEFAULT";
+		String toConsole = "\nNAME     HEIGHT     WEIGHT\n";
 		String newLine;
 		SortedTreeSet top = root;
 		int count = 0;
@@ -199,24 +199,24 @@ public class SortedTreeSet implements SortedTreeSetInterface{
 			SortedTreeSet node = queue.remove(); //this is the root?
 			//System.out.print(node.data.toString() + " \n");
 
-			if(node.left != null)
-				queue.add(node.left);
+			if(node.hasLeft()){
+				queue.add(node.getLeft());
+			}
 
-			if(node.right != null)
-				queue.add(node.right);
+			if(node.hasRight()){
+				queue.add(node.getRight());
+			}
 
-			//System.out.println(queue.data + " \n");
-		//	newLine = queue.data.toString() + "\n";
-		//	toConsole = toConsole.concat(newLine);
+			//System.out.println(node.data.toString());
+			newLine = node.data.toString() + "\n";
+			toConsole = toConsole.concat(newLine);
 			count++;
 
 		}
-		System.out.println("COUNT: " + count);
+		//System.out.println("COUNT: " + count);
 
 		return toConsole;
-
-
-
+	
 
 	}//end toString()
 
